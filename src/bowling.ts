@@ -1,13 +1,11 @@
-type Movements = "X" | "/" | "-" | string;
-
 export class Bowling {
-  frame: Movements[] = [];
+  frame: string[] = [];
 
-  roll = (pins: Movements) => {
+  roll = (pins: string) => {
     this.frame.push(pins);
   };
 
-  rollMany = (frames: number, pins: Movements) => {
+  rollMany = (frames: number, pins: string) => {
     for (let i = 0; i < frames; i++) {
       this.frame.push(pins);
     }
@@ -15,6 +13,10 @@ export class Bowling {
 
   private isStrike = (roll: string) => {
     return roll === "X";
+  };
+
+  private isSpare = (roll: string) => {
+    return roll.includes("/");
   };
 
   getScore = () => {
@@ -28,6 +30,8 @@ export class Bowling {
         if (this.isStrike(this.frame[i + 2])) {
           score += 10;
         }
+      } else if (this.isSpare(this.frame[i])) {
+        score += 10 + parseInt(this.frame[i + 1]);
       } else {
         score += parseInt(this.frame[i]);
       }

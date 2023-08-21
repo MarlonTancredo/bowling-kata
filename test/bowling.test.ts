@@ -35,3 +35,15 @@ describe("Miss", () => {
 });
 
 //5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5 (21 rolls: 10 pairs of 5 and spare, with a final 5) = 10 frames * 15 points = 150
+describe("Spare", () => {
+  test("Should return 150 points", () => {
+    //Arrange
+    //Act
+    bowling.rollMany(10, "5/");
+    bowling.roll("5");
+    bowling.getScore();
+
+    //Assert
+    expect(bowling.getScore()).toBe(150);
+  });
+});
