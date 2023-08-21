@@ -13,15 +13,19 @@ export class Bowling {
     }
   };
 
+  private isStrike = (roll: string) => {
+    return roll === "X";
+  };
+
   getScore = () => {
     let score = 0;
     for (let i = 0; i < 10; i++) {
-      if (this.frame[i] === "X") {
+      if (this.isStrike(this.frame[i])) {
         score += 10;
-        if (this.frame[i + 1] === "X") {
+        if (this.isStrike(this.frame[i + 1])) {
           score += 10;
         }
-        if (this.frame[i + 2] === "X") {
+        if (this.isStrike(this.frame[i + 2])) {
           score += 10;
         }
       } else {
