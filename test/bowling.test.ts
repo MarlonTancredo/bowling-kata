@@ -20,3 +20,18 @@ describe("Strike", () => {
     expect(bowling.getScore()).toBe(300);
   });
 });
+
+//9- 9- 9- 9- 9- 9- 9- 9- 9- 9- (20 rolls: 10 pairs of 9 and miss) = 10 frames * 9 points = 90
+describe("Miss", () => {
+  test("Should return 90 points", () => {
+    //Arrange
+    //Act
+    bowling.rollMany(10, "9-");
+    bowling.getScore();
+
+    //Assert
+    expect(bowling.getScore()).toBe(90);
+  });
+});
+
+//5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5 (21 rolls: 10 pairs of 5 and spare, with a final 5) = 10 frames * 15 points = 150
